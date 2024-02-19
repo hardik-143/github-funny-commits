@@ -6,13 +6,13 @@ const fs = require("fs");
 app.use(express.json());
 
 app.get("/api/commits/random", function (req, res) {
-    const fileContent = fs.readFileSync("./data.json");
+    const fileContent = fs.readFileSync(`${__dirname}/data.json`)
     const data = JSON.parse(fileContent);
     const random = Math.floor(Math.random() * data.length);
     res.json(data[random]);
   });
 app.get("/api/commits", function (req, res) {
- const fileContent = fs.readFileSync("data.json");
+ const fileContent = fs.readFileSync(`${__dirname}/data.json`)
     const data = JSON.parse(fileContent);   
     res.json(data);
 
