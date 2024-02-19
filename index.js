@@ -10,22 +10,21 @@ app.get("/api/commits/random", function (req, res) {
   const fileContent = fs.readFileSync(`${__dirname}/data.json`);
   const data = JSON.parse(fileContent);
   const random = Math.floor(Math.random() * data.length);
-  console.log(random)
   const uniqueID = crypto.randomBytes(16).toString("hex")+ random.toString().padStart(3, '0');
   res.json({
     ...data[random],
     id: uniqueID,
   });
 });
-app.get("/api/commits", function (req, res) {
-  const fileContent = fs.readFileSync(`${__dirname}/data.json`);
-  const data = JSON.parse(fileContent);
-  res.json(data);
-});
+// app.get("/api/commits", function (req, res) {
+//   const fileContent = fs.readFileSync(`${__dirname}/data.json`);
+//   const data = JSON.parse(fileContent);
+//   res.json(data);
+// });
 
-app.get("/api", function (req, res) {
-  res.send("API <a href='/api/commits'>Commits</a>");
-});
+// app.get("/api", function (req, res) {
+//   res.send("API <a href='/api/commits'>Commits</a>");
+// });
 
 app.get("/", function (req, res) {
   const fileContent = fs.readFileSync(`${__dirname}/view/index.html`);
