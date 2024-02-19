@@ -19,11 +19,11 @@ app.get("/api/commits", function (req, res) {
 });
 
 app.get("/api", function (req, res) {
-  res.json({ message: "Hello from server!" });
+  res.send("API <a href='/api/commits'>Commits</a>")
 });
 
 app.get("/", function (req, res) {
-  res.send("Hello World!");
+  res.send("Hello World! <a href='/api'>API</a>");
 });
 app.listen(PORT, function () {
   console.log(`app listening on port ${PORT}!`);
